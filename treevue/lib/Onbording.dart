@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:treevue/content_model.dart';
 import 'package:treevue/home.dart';
+import 'package:treevue/main_page.dart';
 
 class Onbording extends StatefulWidget {
   @override
@@ -89,7 +90,7 @@ class _OnbordingState extends State<Onbording> {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => Home(),
+                      builder: (_) => MainPage(),
                     ),
                   );
                 }

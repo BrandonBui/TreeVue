@@ -37,7 +37,6 @@ class MyApp extends StatelessWidget {
       initialRoute: "/Onbording",
       routes: {
         "/Onbording": (context) => Onbording(),
-        "/SurveyPage": (context) => SurveyPage(),
         "/Page1": (context) => Page1(),
         "/MainPage": (context) => MainPage(),
         "/HomePage": (context) => HomePage()

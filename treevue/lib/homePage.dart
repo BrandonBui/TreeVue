@@ -102,10 +102,49 @@ class _homePageState extends State<homePage> {
 
     return Scaffold(
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ElevatedButton(
-            onPressed: () => SignOut(),
-            child: Container(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              child: Container(
+                padding: EdgeInsets.all(8),
+                width: 300,
+                height: 75,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(156, 249, 254, 213),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                ),
+                child: Text(
+                  'Streak: 124 Days!',
+                  style: GoogleFonts.poppins(
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              child: Container(
+                padding: EdgeInsets.all(8),
+                width: 300,
+                height: 75,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(156, 249, 254, 213),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                ),
+                child: Text(
+                  'Eco Points: 100',
+                  style: GoogleFonts.poppins(
+                    fontSize: 20,
+                  ),
+                ),
+              ),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -122,11 +161,15 @@ class _homePageState extends State<homePage> {
                 child: Text(
                   'Number of Trees Saved: 25',
                   style: GoogleFonts.poppins(
-                    fontSize: 15,
+                    fontSize: 20,
                   ),
                 ),
               ),
             ),
+          ),
+          Text(
+            "Recommendations:",
+            style: GoogleFonts.poppins(color: Colors.white, fontSize: 20),
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),
@@ -134,7 +177,7 @@ class _homePageState extends State<homePage> {
               //mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 300,
+                  height: 170,
                   child: ListView.separated(
                     scrollDirection: Axis.horizontal,
                     padding: const EdgeInsets.all(12),
@@ -185,7 +228,7 @@ class _homePageState extends State<homePage> {
         ),
       ),
       */
-      backgroundColor: Color.fromRGBO(125, 154, 113, 100),
+      backgroundColor: Color.fromARGB(255, 125, 154, 113),
     );
   }
 }

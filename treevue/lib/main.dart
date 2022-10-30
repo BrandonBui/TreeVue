@@ -10,6 +10,7 @@ import 'package:treevue/UpcomingEventsPage.dart';
 import 'package:treevue/homePage.dart';
 import 'package:treevue/main_page.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:treevue/products.dart';
 import 'package:treevue/service.dart';
 
 import 'package:treevue/Onbording.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: "/Onbording",
+      initialRoute: "/HomePage",
       routes: {
         "/Onbording": (context) => Onbording(),
         "/Page1": (context) => Page1(),
@@ -75,17 +76,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       curve: Curves.ease,
     );
 
-    _createInterstitialAd();
     //controller.repeat();
-  }
-
-  void _createInterstitialAd() {
-    InterstitialAd.load(
-        adUnitId: AdMobService.interstitialAdUnitId!,
-        request: const AdRequest(),
-        adLoadCallback: InterstitialAdLoadCallback(
-            onAdLoaded: (ad) => interstitialAd = ad,
-            onAdFailedToLoad: (LoadAdError error) => interstitialAd = null));
   }
 
   void dispose() {
@@ -126,7 +117,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ),
         label: 'Events'),
   ];
-  final user = FirebaseAuth.instance.currentUser!;
+  // final user = FirebaseAuth.instance.currentUser!;
 
   @override
   Widget build(BuildContext context) {
@@ -139,12 +130,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             _currentIndex = newIndex;
           });
         }),
-        children: [
-          homePage(),
-          MarketplacePage(),
-          SurveyStartPage(),
-          UpcomingEventsPage()
-        ],
+        children: [homePage(), products(), Page1(), UpcomingEventsPage()],
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(10.0),

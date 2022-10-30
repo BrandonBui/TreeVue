@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:treevue/SurveyPageSequence/Page1.dart';
+
+import 'package:treevue/SurveyPage.dart';
+import 'package:treevue/Onbording.dart';
 
 import 'package:treevue/SurveyPage.dart';
 import 'package:treevue/Onbording.dart';
@@ -7,7 +11,7 @@ import 'package:treevue/Onbording.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Firebase.initializeApp();
+  //await Firebase.initializeApp();
 
   runApp(const MyApp()); //changed the const
 }

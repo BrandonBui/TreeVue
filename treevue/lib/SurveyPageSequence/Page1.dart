@@ -112,32 +112,64 @@ class _Page1State extends State<Page1> {
               )],
       ),
       
+      SizedBox(height: height/10),
           
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0),
-              child: Center(
-                child: SizedBox(
-                  height: height/12,
-                  width: width/2,
-                  child: ElevatedButton(onPressed: (){
-                    print(selectedYes);
-                    if (selectedYes == true){
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Page2()));
-                    } else{
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => Page3()));
-                    }
-                  }, 
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFFCCD0B0),
-                    shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(30.0),
-                      
+            Row(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(left: width/13),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Center(
+                      child: SizedBox(
+                        height: height/20,
+                        width: width/3,
+                        child: ElevatedButton(onPressed: (){
+                          Navigator.pop(context);
+                        }, 
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFFCCD0B0),
+                          shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(30.0),
+                            
+                          ),
+                        ),
+                        child: Text("Previous", style: GoogleFonts.rufina(color: Color(0xFF504F4F)),)
+                        ),
+                      ),
                     ),
                   ),
-                  child: Text("Next", style: GoogleFonts.rufina(color: Color(0xFF504F4F)),)
+                ),
+                Container(
+                  margin:EdgeInsets.only(left: width/6), 
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Center(
+                      child: SizedBox(
+                        height: height/20,
+                        width: width/3,
+                        child: ElevatedButton(onPressed: (){
+                          print(selectedYes);
+                          if (selectedYes == true){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => Page2()));
+                          } else{
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Page3()));
+                          }
+                        }, 
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFFCCD0B0),
+                          shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(30.0),
+                            
+                          ),
+                        ),
+                        child: Text("Next", style: GoogleFonts.rufina(color: Color(0xFF504F4F)),)
+                        ),
+                      ),
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
           
       ],

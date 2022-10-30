@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:treevue/MarketplacePage.dart';
 import 'package:treevue/SignInPage.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -9,11 +10,13 @@ import 'package:treevue/UpcomingEventsPage.dart';
 import 'package:treevue/homePage.dart';
 import 'package:treevue/main_page.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:treevue/service.dart';
 
 import 'package:treevue/Onbording.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
 
   await Firebase.initializeApp(
     options: FirebaseOptions(
@@ -58,6 +61,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> animation;
 
+  InterstitialAd? interstitialAd;
   @override
   void initState() {
     super.initState();
@@ -71,7 +75,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       curve: Curves.ease,
     );
 
+    _createInterstitialAd();
     //controller.repeat();
+  }
+
+  void _createInterstitialAd() {
+    InterstitialAd.load(
+        adUnitId: AdMobService.interstitialAdUnitId!,
+        request: const AdRequest(),
+        adLoadCallback: InterstitialAdLoadCallback(
+            onAdLoaded: (ad) => interstitialAd = ad,
+            onAdFailedToLoad: (LoadAdError error) => interstitialAd = null));
   }
 
   void dispose() {

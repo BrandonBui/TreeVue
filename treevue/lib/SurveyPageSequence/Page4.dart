@@ -14,21 +14,23 @@ class Page4 extends StatefulWidget {
 class _Page4State extends State<Page4> {
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
+        var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     Color buttonColor1 = Color(0xFF4A503E);
     Color textColor = Color(0xFFFFE8BB);
     Color textColor2 = Color(0xFFBAB653);
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 125, 154, 113),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         centerTitle: true,
         backgroundColor: Color.fromARGB(255, 57, 74, 47),
-        shadowColor: Colors.white,
+        elevation: 0,
         title: Text(
           "Daily Survey",
           textAlign: TextAlign.center,
           style: GoogleFonts.rufina(
-              fontSize: MediaQuery.of(context).size.height / 15),
+              fontSize:50),
         ),
         toolbarHeight: MediaQuery.of(context).size.height / 4,
       ),

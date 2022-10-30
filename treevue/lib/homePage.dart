@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:treevue/service.dart';
 
@@ -18,35 +18,88 @@ class _homePageState extends State<homePage> {
     await FirebaseAuth.instance.signOut();
   }
 
-  InterstitialAd? interstitialAd;
-
-  void _showInterstitalAd() {
-    if (interstitialAd != null) {
-      interstitialAd!.fullScreenContentCallback =
-          FullScreenContentCallback(onAdDismissedFullScreenContent: (ad) {
-        ad.dispose();
-        _createInterstitialAd();
-      }, onAdFailedToShowFullScreenContent: (ad, error) {
-        ad.dispose();
-        _createInterstitialAd();
-      });
-      _createInterstitialAd();
-      interstitialAd!.show();
-      interstitialAd = null;
-    }
-  }
-
-  void _createInterstitialAd() {
-    InterstitialAd.load(
-        adUnitId: AdMobService.interstitialAdUnitId!,
-        request: const AdRequest(),
-        adLoadCallback: InterstitialAdLoadCallback(
-            onAdLoaded: (ad) => interstitialAd = ad,
-            onAdFailedToLoad: (LoadAdError error) => interstitialAd = null));
-  }
+  List recommendationsTitle = [
+    Text(
+      "Ride a bike to your next location",
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        height: 1.2,
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+    Text(
+      "Try eating a non-meat based alternative",
+      textAlign: TextAlign.center,
+      style: TextStyle(
+        height: 1.2,
+        fontSize: 18,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
+    @override
+    Widget buildCard(int index) => Stack(
+          children: [
+            /*
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              
+              child: Image.network(
+                'https://source.unsplash.com/random?sig=$index', //** IMAGE HERE */
+                height: 150, //** BOX HEIGHT */
+                width: 150, //** BOX WIDTH */
+                fit: BoxFit.cover,
+              ),
+              */
+            Center(
+                child: SizedBox(
+                    height: 150,
+                    width: 150,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color.fromARGB(255, 13, 61, 24),
+                            spreadRadius: 2.0,
+                            blurRadius: 4,
+                            offset: Offset(0, 3), // Shadow position
+                          ),
+                        ],
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            //Recommendation description
+                            recommendationsTitle[index],
+
+                            Text(
+                              //Goal description
+                              "Tap to Learn More",
+                              style: TextStyle(
+                                fontSize: 15,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ))),
+            /*
+            ),
+            const SizedBox(height: 8),
+            Text(goal.goalName), //**IMAGE CAPTION TEXT */
+
+            */
+          ],
+        );
+
     return Scaffold(
       body: Column(
         children: [
@@ -54,10 +107,49 @@ class _homePageState extends State<homePage> {
             onPressed: () => SignOut(),
             child: Container(),
           ),
-          ElevatedButton(
-            onPressed: _showInterstitalAd,
-            child: const Text("ad"),
-          )
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              child: Container(
+                padding: EdgeInsets.all(8),
+                width: 300,
+                height: 75,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(156, 249, 254, 213),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                ),
+                child: Text(
+                  'Number of Trees Saved: 25',
+                  style: GoogleFonts.poppins(
+                    fontSize: 15,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              //mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 300,
+                  child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.all(12),
+                    itemBuilder: (context, index) => buildCard(index),
+                    separatorBuilder: (context, index) {
+                      return SizedBox(
+                        width: 10, //** BETWEEN SPACING */
+                      );
+                    },
+                    itemCount: 2,
+                  ),
+                )
+              ],
+            ),
+          ),
         ],
       ),
       /*

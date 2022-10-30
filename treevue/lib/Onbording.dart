@@ -1,6 +1,7 @@
 // ignore_for_file: import_of_legacy_library_into_null_safe
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:treevue/content_model.dart';
 import 'package:treevue/home.dart';
 import 'package:treevue/main_page.dart';
@@ -29,6 +30,7 @@ class _OnbordingState extends State<Onbording> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 125, 154, 113),
       body: Column(
         children: [
           Expanded(
@@ -47,10 +49,10 @@ class _OnbordingState extends State<Onbording> {
                     children: [
                       Text(
                         contents[i].title,
-                        style: TextStyle(
-                          fontSize: 35,
-                          fontWeight: FontWeight.bold,
-                        ),
+                        style: GoogleFonts.rufina(
+                            fontSize: 36,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
                       ),
                       Image.asset(
                         contents[i].image,
@@ -60,9 +62,9 @@ class _OnbordingState extends State<Onbording> {
                       Text(
                         contents[i].discription,
                         textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.grey,
+                        style: GoogleFonts.poppins(
+                          fontSize: 15,
+                          color: Colors.white,
                         ),
                       )
                     ],
@@ -81,6 +83,9 @@ class _OnbordingState extends State<Onbording> {
             ),
           ),
           Container(
+            decoration: BoxDecoration(
+                color: Color.fromARGB(255, 57, 74, 47),
+                borderRadius: BorderRadius.circular(18)),
             height: 60,
             margin: EdgeInsets.all(40),
             width: double.infinity,
@@ -100,8 +105,6 @@ class _OnbordingState extends State<Onbording> {
                 );
               },
               style: ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll<Color>(
-                    Theme.of(context).primaryColor),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0),
@@ -132,8 +135,8 @@ class _OnbordingState extends State<Onbording> {
       width: currentIndex == index ? 25 : 10,
       margin: EdgeInsets.only(right: 5),
       decoration: BoxDecoration(
+        color: Color.fromARGB(255, 57, 74, 47),
         borderRadius: BorderRadius.circular(20),
-        color: Theme.of(context).primaryColor,
       ),
     );
   }

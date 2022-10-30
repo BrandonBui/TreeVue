@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:treevue/SurveyPage.dart';
 import 'package:firebase_core/firebase_core.dart';
+
+import 'package:treevue/SurveyPage.dart';
+import 'package:treevue/Onbording.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,9 +18,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(initialRoute: "/SurveyPage", routes: {
-      "/SurveyPage": (context) => SurveyPage(),
-    });
+    return MaterialApp(
+      initialRoute: "/Onbording",
+      routes: {
+        "/Onbording": (context) => Onbording(),
+        "/SurveyPage": (context) => SurveyPage(),
+      },
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+    );
   }
 }
 
